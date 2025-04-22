@@ -29,6 +29,7 @@ metadata:
     team: ledger
     tier: db
   name: ledger-db-config
+  namespace: group4-ns
 ---
 apiVersion: v1
 kind: Service
