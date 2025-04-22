@@ -63,6 +63,7 @@ metadata:
     team: ledger
     tier: db
   name: ledger-db
+  namespace: group4-ns
 spec:
   replicas: 1
   selector:
