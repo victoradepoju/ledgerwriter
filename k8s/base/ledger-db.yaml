@@ -40,6 +40,7 @@ metadata:
     team: ledger
     tier: db
   name: ledger-db
+  namespace: group4-ns
 spec:
   ports:
     - name: tcp
@@ -104,7 +105,6 @@ spec:
             - mountPath: /var/lib/postgresql/data
               name: postgresdb
               subPath: postgres
-      serviceAccount: bank-of-anthos
       serviceAccountName: default
       volumes:
         - emptyDir: {}
