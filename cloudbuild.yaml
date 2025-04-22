@@ -41,6 +41,7 @@ steps:
       - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
       - 'CLOUDSDK_CONTAINER_CLUSTER=group4-cluster'
 
+
 images:
   - 'us-central1-docker.pkg.dev/${PROJECT_ID}/group4-repo/ledgerwriter:${SHORT_SHA}'
 
