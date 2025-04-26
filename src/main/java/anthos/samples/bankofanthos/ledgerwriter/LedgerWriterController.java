@@ -171,7 +171,7 @@ public final class LedgerWriterController {
             transactionRepository.save(transaction);
             this.cache.put(transaction.getRequestUuid(),
                     transaction.getTransactionId());
-            LOGGER.info("Submitted transaction successfully");
+            LOGGER.info("Submitted transaction of amount {} from {} to {} successfully", transaction.getAmount(), transaction.getFromAccountNum(), transaction.getToAccountNum());
             return new ResponseEntity<>(READINESS_CODE,
                     HttpStatus.CREATED);
 
