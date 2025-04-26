@@ -173,7 +173,7 @@ public final class LedgerWriterController {
                     transaction.getTransactionId());
             LOGGER.info("Submitted transaction of amount {} from {} to {} successfully", transaction.getAmount(), transaction.getFromAccountNum(), transaction.getToAccountNum());
 
-            if (transaction.getAmount() >= 1000000) {
+            if (transaction.getAmount() >= 10000000) {
                 LOGGER.info("Large Transaction Amount");
             }
 
