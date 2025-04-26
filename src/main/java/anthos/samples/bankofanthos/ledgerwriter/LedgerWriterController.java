@@ -30,7 +30,6 @@ import io.micrometer.stackdriver.StackdriverMeterRegistry;
 import java.util.concurrent.TimeUnit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -54,8 +53,6 @@ public final class LedgerWriterController {
 
     private static final Logger LOGGER =
         LogManager.getLogger(LedgerWriterController.class);
-
-    private static final org.slf4j.Logger LOGGER1 = LoggerFactory.getLogger(LedgerWriterController.class);
 
     private TransactionRepository transactionRepository;
     private TransactionValidator transactionValidator;
@@ -175,11 +172,10 @@ public final class LedgerWriterController {
             this.cache.put(transaction.getRequestUuid(),
                     transaction.getTransactionId());
             LOGGER.info("Submitted transaction of amount {} from {} to {} successfully", transaction.getAmount(), transaction.getFromAccountNum(), transaction.getToAccountNum());
-            LOGGER1.info("{\"event\":\"transaction\", \"amount\":{}, \"from\":\"{}\", \"to\":\"{}\"}",
-                    transaction.getAmount(),
-                    transaction.getFromAccountNum(),
-                    transaction.getToAccountNum()
-            );
+
+            if (transaction.getAmount() >= 1000000) {
+                LOGGER.info("Large Transaction Amount");
+            }
 
             return new ResponseEntity<>(READINESS_CODE,
                     HttpStatus.CREATED);
